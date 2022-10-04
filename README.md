@@ -3,11 +3,12 @@ Dancing lights is an interactive sensitive light installation where 150 programm
 
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 
-## Status
+## Status and todos
 *Under development*
 * Sensor needs more testing (select / build mega resistor?)
 * Need to design and fabricate a base
 * Add models from fusion
+* Design fan mount (postponed)
 
 
 ## Principles and inspiration

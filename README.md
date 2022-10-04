@@ -1,5 +1,5 @@
 # Dancing_lights
-Dancing lights is an interactive sensitive light installation where 150 programmable LEDs in a tube filled with crushed glass responds to rythmic movement.
+Dancing lights is an interactive sensitive light installation where 300 programmable LEDs in a tube filled with crushed glass responds to rythmic movement.
 
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 
@@ -20,7 +20,7 @@ Dancing lights is an interactive sensitive light installation where 150 programm
 ## Bill of Materials
 Purchased in or imported to Norway. NOK = Norwegian kroner.
 
-* 150 WS2812B GRB LEDs on a 5 m tape strip IP30 5V (30/m). WS2812B GRB ~$10 from [Aliexpress](https://www.aliexpress.com/item/32682015405.html) 
+* 300 WS2812B GRB LEDs on a 5 m tape strip IP30 5V (60/m). WS2812B GRB ~$10 from [Aliexpress](https://www.aliexpress.com/item/32682015405.html) 
 * 1m Ø50 mm Acrylic tube 383 NOK from [Sløjd-Detaljer](https://www.sloyd-detaljer.no/produkter/tre-metallsloyd/plast-gummi/ror-stenger/akrylror-1757)
 * Used 2 kg 4-10 mm size crushed glass, 175 NOK for 3 Kg from [My stone](https://mystonebrukskunst.no/dekorasjonsglass)
 * 3D-printed endcaps for the tube, modeled in Fusion360 [STL](models/50mm_plug.stl) Printed for free on a Pruse at [Bitraf makerspace](https://bitraf.no/)

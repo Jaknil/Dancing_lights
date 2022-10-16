@@ -1,24 +1,30 @@
 # Dancing_lights
-Dancing lights is an interactive sensitive light installation where 300 programmable LEDs in a tube filled with crushed glass responds to rythmic movement.
+Dancing lights is an interactive sensitive light installation where 240 (was 300) programmable LEDs in a tube filled with crushed glass responds to movement by sensing the induced voltage from static electricity into an old TV antenna.
+
+[![Youtube_Short](img/youtube_short.jpg)](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
+[Youtube short showing basic functions, no audio](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
+
 
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 
 ## Status and todos
-*Under development*
-* Move power connector to start of strip side so the microcontroller can go in the base, and attach to the antenna
-* Sensor needs more testing (select / build mega resistor?) or alternative developed. 
-* 3D print the parts
-* Assembly and testing
-* Power brick mount
-* PCB mount
-* Do I make a new PCB? Have headers? 
+*Under testing and refinement*
 
+[Current code](code/FirstLight_dual_sensor/FirstLight_dual_sensor.ino)
+
+The last 60 LEDs are currently not working since I accidentally pulled off a solder-pad. Will probably have to empty it of glass to fix.
+
+To filter away noise the arduino ground has to be connected to ground via a capacitor (type Y). I currently solve this by using an extra power brick for a Thinkpad laptop that happens to have one built in.
+
+The long wire for the antennae is acting like an antenna as well and merges the signals.
+
+Right now it flickers quite a bit, I should look into altering the code to reduce that. (Perhaps blur or filter harder?)
 
 ## Principles and inspiration
 * The glass shard filled LED diffusor tube is inspired by [Invento3Ds Instructable: Glass Stone LED Tube](https://www.instructables.com/Glass-Stone-LED-Tube-WiFi-Controlled-Through-Smart/)
 * The motion sensor is based on Capacitive touch [Arduino playground: Capacitive Sensing Library
  by Paul Badger](https://playground.arduino.cc/Main/CapacitiveSensor/) and [My own lesson material on pulldown and EMC noise](https://github.com/KubenKoder/Arduino/tree/master/Egna%20exempel/pulldown)
-* It uses the Arduino [FastLED library](https://fastled.io/) to make the pretty light patterns
+* It uses the Arduino [FastLED library](https://fastled.io/) to make the pretty light patterns and [Scott Marleys youtube videos were priceless](https://youtube.com/playlist?list=PLgXkGn3BBAGi5dTOCuEwrLuFtfz0kGFTC) 
 
 ## Bill of Materials
 Purchased in or imported to Norway. NOK = Norwegian kroner.
@@ -34,7 +40,7 @@ Purchased in or imported to Norway. NOK = Norwegian kroner.
 * Base material TBD
 * Vero-board
 * Capacitors
-* Antenna (FIA 137 47-68MHz, 87,5-104MHz or 174-230MHz depending on expended length) from flea market
+* Antenna from flea market (According to its manual it's a FIA 137 47-68MHz, 87,5-104MHz or 174-230MHz depending on expended length but I doubt it matters in my case.) 
 
 ## Components
 ### 5x1m LED strips mounted on Ø15mm copper tube
@@ -103,3 +109,22 @@ For holding the power bricks in place.
 
 [STL file](models/brick_holder.stl)
 
+
+## Code 
+
+[Current code using both antennas](code/FirstLight_dual_sensor/FirstLight_dual_sensor.ino)
+  
+"Pacifica" and "Fire2012" are also nice when copied around the column. 
+
+### Ideas of features to code:
+
+#### Smooth movement between pixels
+I observe that moving the leds along a full step at a time isn't very smooth. As in if I turn the next led on 100% as I turn the last to 0%. Some X-fading would be much better. Perhaps I can increase the pixel resolution articficially and spread the light between two pixels proportionally, like anti-aliasing?
+
+#### Reduce flicker
+Perhaps I can use blur or smoothe harder?
+
+#### Beat reaction
+I have not started on the code for a beat-sensor like I had intended. I have a basic idea but no code yet.
+If I smoothe the same signal differently hard and compare when they cross I should be able to track a frequency. I can track amplitude also if needed but should wait with it.
+I have no ready plan for what to show if I mananage to track the beat. Figure that out first?

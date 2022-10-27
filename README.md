@@ -1,9 +1,14 @@
 # Dancing_lights
-Dancing lights is an interactive sensitive light installation where 240 (was 300) programmable LEDs in a tube filled with crushed glass responds to movement by sensing the induced voltage from static electricity into an old TV antenna.
+Dancing lights is an interactive sensitive light installation where 180 (was 300) programmable LEDs in a tube filled with crushed glass responds to movement by sensing the induced voltage from static electricity stored in people into an old TV antenna.
+
+[![Video demo from Skaperfesivalen](img/dancing-lights-led-art-sd-image-640x480-ytshorts.savetube.me.jpg)](https://youtube.com/shorts/MSAI1wNTsRs)
+
+[Video demo from Oslo skaperfestival 2022 at Deichman library](https://youtube.com/shorts/MSAI1wNTsRs)
+
 
 [![Youtube_Short](img/youtube_short.jpg)](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
-[Youtube short showing basic functions, no audio](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
 
+[Youtube short showing basic functions, no audio](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
 
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 

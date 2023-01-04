@@ -68,6 +68,14 @@ Default configuration for the LED coordinates.
 
 Alternative LED coordinates increases the axial resolution from 60 leds / m to 300 leds / m. 
 
+### Schematic
+![Schematic](img\schematic.jpg)
+
+[Schematic pdf](Schematic.pdf)
+
+[Schematic frizing](Schematic_fritzing.fzz)
+
+
 ### 3D models
 
 ![fusion model](img/fusion_model.jpg)

@@ -67,6 +67,12 @@ Default configuration for the LED coordinates.
 
 Alternative LED coordinates increases the axial resolution from 60 leds / m to 300 leds / m. 
 
+### Microcontroller
+
+![arduino](img/arduino.jpg)
+
+I'm using an imported Chinese Arduino Nano with the CH40 USB to transistor logic chip. Remember to select "Old Bootloader" under processor. Herre you can download [drivers for the chip](https://github.com/KubenKoder/Arduino/blob/master/USB%20driver/README.md#usb-drivers)
+
 ### Schematic
 
 ![Schematic](img/schematic.jpg)

@@ -13,11 +13,10 @@ Dancing lights is an interactive sensitive light installation where 180 (was 300
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 
 ## Status and todos
-*Under testing and refinement*
 
 [Current code](code/FirstLight_dual_sensor/FirstLight_dual_sensor.ino)
 
-The last 60 LEDs are currently not working since I accidentally pulled off a solder-pad. Will probably have to empty it of glass to fix.
+120 of 300 LEDs are currently not working since I accidentally pulled off a solder-pad. Will probably have to empty it of glass to fix. The problem is in the top.
 
 To filter away noise the arduino ground has to be connected to ground via a capacitor (type Y). I currently solve this by using an extra power brick for a Thinkpad laptop that happens to have one built in.
 
@@ -67,6 +66,15 @@ Default configuration for the LED coordinates.
 ![leds_on_copper_tube_wrapped](img/leds_on_copper_tube_wrapped.jpg)
 
 Alternative LED coordinates increases the axial resolution from 60 leds / m to 300 leds / m. 
+
+### Schematic
+
+![Schematic](img/schematic.jpg)
+
+[Schematic pdf](Schematic.pdf)
+
+[Schematic frizing](Schematic_fritzing.fzz)
+
 
 ### 3D models
 

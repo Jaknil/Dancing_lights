@@ -1,4 +1,12 @@
 
+// Full documentation on https://github.com/Jaknil/Dancing_lights
+
+//Reads the voltage on an antenna connected directly to an analog input and plots the 0-5V value on a LED bar graph three times in Red Green and Blue with increasing smoothing. The plotted values fades with time. 
+// The effect is an interactive rainbow effect if you move, thus indusing a voltage in the antenna. If you stand still, it will average out to a static white bar.
+// It only works if it (the arduino ground) is connected to a noise filtered DC power supply.
+
+
+
 #include <FastLED.h>
 
 #define strips_alive  3
@@ -10,8 +18,8 @@ const int NUM_LEDS = 60*strips_alive;  //120 of 300 are disconnected
 CRGB leds[NUM_LEDS];
 
 
-#define analogInPin1 A0
-#define analogInPin2 A1
+#define analogInPin1 A1
+
 //variable to store smooothed signal
 int smooth1 = 0;
 int smooth2 = 0;
@@ -25,7 +33,7 @@ int led_numbers[NUM_LEDS];
 void setup() {
 
    pinMode(analogInPin1, INPUT);
-   pinMode(analogInPin2, INPUT);
+
     Serial.begin(115200);
 //Array to store the actual LED positions
 
@@ -84,17 +92,17 @@ for (int i=0;i<240;i++){
 int position = 0;
 
 
- int antennaSignal[3];
+ int antennaSignal[3]; //Define a global vector to store the antenna values in
 void loop() {
 
 
-     //read the antenna
-    Antenna(5);
+     //read the antenna, set smoothing stength
+    Antenna(5); 
 
      
   
      EVERY_N_MILLISECONDS(20){ 
-      fadeToBlackBy(leds, NUM_LEDS, 10);
+      fadeToBlackBy(leds, NUM_LEDS, 10); //fade the old leds
 
 //Add colors instead
   // Add one CRGB color to another.
@@ -121,7 +129,6 @@ void Antenna(int smoothStrenght){
 //ANALOG antenna
  // read the analog in value:
 int sensorValue1 = analogRead(analogInPin1); // goes from zero to 1023
-//int sensorValue2 = analogRead(analogInPin2); // goes from zero to 1023
 //smooth it
 smooth1 = (smooth1*smoothStrenght + sensorValue1)/(1+smoothStrenght);
  int smoothStrenght2 =smoothStrenght+30;
@@ -165,7 +172,7 @@ if (true) { //Plot the data
 //  Serial.print(", Max*2 ");
 //  Serial.print(1023*2);
   Serial.print(", Min ");
-  Serial.print(0);
+  Serial.print(1); //to zoom the graph
 
   Serial.println(); //Note that only this print command is a println = "print line". The others just add text to the same line, have a look in the serial monitor to see.
 }

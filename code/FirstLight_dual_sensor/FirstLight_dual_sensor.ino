@@ -160,18 +160,18 @@ if (true) { //Plot the data
     // print the results to the Serial Monitor:
  //  Serial.print("R ");
  //  Serial.print(sensorValue+240);
-   Serial.print("A0 ");
+   Serial.print("Smooth1:");
    Serial.print(antennaSignal[0]); //some smooth
-   Serial.print(",A1 ");
+   Serial.print(",Smooth2:");
    Serial.print(antennaSignal[1]); //more smooth
-   Serial.print(",A2 ");
+   Serial.print(",RawSignal:");
    Serial.print(antennaSignal[2]); //raw
   //Fixed lines, stops zooming
-    Serial.print(", Max ");
+    Serial.print(",Max:");
   Serial.print(NUM_LEDS);
 //  Serial.print(", Max*2 ");
 //  Serial.print(1023*2);
-  Serial.print(", Min ");
+  Serial.print(",Min:");
   Serial.print(1); //to zoom the graph
 
   Serial.println(); //Note that only this print command is a println = "print line". The others just add text to the same line, have a look in the serial monitor to see.

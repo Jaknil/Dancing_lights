@@ -38,13 +38,13 @@ Here is a plots of the three signals beeing shown on the LED-column, when no big
 
 Here is a plots of the three signals beeing shown on the LED-column, when a big movement in the room change the antenna charge level from min to max and then back down again. Due to the intentional "lag" from the smoothing the different colored LED being lit up at any one time will separate and create an interactive rainbow, before reverting to a white bar when the movement stops. The vertical axis represents 0-5V and adress of which LED to light up from 0-180 (180 is max since 120 of the LEDs are disabled from a broken wire).
 
-![Smooth_plot_big_change.png](Smooth_plot_big_change.png)
+![Smooth_plot_big_change.png](img/Smooth_plot_big_change.png)
 
 ### Filtering noise
 
 Here I have disconnected the noise filtered power supply from the USB and we can se 50Hz noise clearly charging and discharging the antenna all the way to the max and min voltage lines. The smoothed signal still reflects slower movements in the room but it's somewhat drowned in the noise. The same, but much suppressed ripple can also be seen on the previous plots where I have the physical noise filter power supply connected. Finding this "hack" was a nice bonus.
 
-![Smooth_plot_small_change_unfiltered.png](Smooth_plot_small_change_unfiltered.png)
+![Smooth_plot_small_change_unfiltered.png](img/Smooth_plot_small_change_unfiltered.png)
 
 Here is further reading on such filter capasitors: [Safety Capacitors First: Class-X and Class-Y Capacitors](https://www.allaboutcircuits.com/technical-articles/safety-capacitor-class-x-and-class-y-capacitors/)
 
@@ -54,11 +54,11 @@ Note to self: I should buy a filtered DC power supply and replace the chinese on
 
 Current powering strategy:
 
-![Powering LEDs](Power_flowchart.png)
+![Powering LEDs](img/Power_flowchart.png)
 
 Improved powering strategy, not yet implemented. This would fix the damage and reduce colour degradation from voltage drop.
 
-![[Powering LEDs suggested improvement](Power_flowchart_fix.png)
+![[Powering LEDs suggested improvement](img/Power_flowchart_fix.png)
 
 Further reference on Powering LEDs: https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels
 

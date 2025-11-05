@@ -5,11 +5,6 @@ Dancing lights is an interactive sensitive light installation where 180 (was 300
 
 [Video demo from Oslo skaperfestival 2022 at Deichman library](https://youtube.com/shorts/MSAI1wNTsRs)
 
-
-[![Youtube_Short](img/youtube_short.jpg)](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
-
-[Youtube short showing basic functions, no audio](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
-
 ![horiz_light_jakob_bitraf](img/horiz_light_jakob_bitraf.jpg)
 
 ## Status and todos
@@ -28,13 +23,17 @@ Right now it flickers quite a bit, I should look into altering the code to reduc
  by Paul Badger](https://playground.arduino.cc/Main/CapacitiveSensor/) and [My own lesson material on pulldown and EMC noise](https://github.com/KubenKoder/Arduino/tree/master/Egna%20exempel/pulldown)
 * It uses the Arduino [FastLED library](https://fastled.io/) to make the pretty light patterns and [Scott Marleys youtube videos were priceless](https://youtube.com/playlist?list=PLgXkGn3BBAGi5dTOCuEwrLuFtfz0kGFTC) 
 
-### Sensing movement
+### Sensing movement of electric charge
+
+Here is a video demonstrating the priciple. I use a electrostatically charged sweater to charge and discharge the antenna voltage level and having it affect which LED pixes light up.
+
+[!Video demonstration with statically charged sweater](img/youtube_short.jpg)](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
 
 The installation can detect movement by reading the voltage on an antenna. The arms of the antenna is connected directly to an 0-5V analog input pin on the microcontroller. The signal strength is read repeatedly (around 200 times per secound) and the value is indicated by lighting up the corresponding LED-pixels on the vertical LED column, zero volts being on the bottom and 5v on top. Three pixels are lit up each time Red pixels for the raw signal strenght, Blue with some smoothing and Green pixels with heavy smoothing, using gliding averages of the signal strengh. When colors happen to overlap, they mix and if the signal is noise free and consistent it will display a white bar at some voltage between 0 and 5V. All pixels are faded over time. The effect is an interactive rainbow effect if you move an elecrical charge (like a human body) in the range of the antenna, thus indusing a voltage in the antenna. If you stand still, it will average out to a static white bar. The range and sensitivity can be tuned with the length of the antenna arms to adjust for low charge damp weather or dry electrostatically active days.
 
 Here is a plots of the three signals beeing shown on the LED-column, when no big movements in the room change the antenna charge level. The LEDs will mix and show a bar of White light, The vertical axis represents 0-5V and adress of which LED to light up from 0-180 (180 is max since 120 of the LEDs are disabled from a broken wire). Notice the 50Hz ripple on the RawSignal plot, that translates to a red haze around the white bar in the LED column.
 
-![Smooth_plot_no_change_filtered.png](Smooth_plot_no_change_filtered.png)
+![Smooth_plot_no_change_filtered.png](img/Smooth_plot_no_change_filtered.png)
 
 Here is a plots of the three signals beeing shown on the LED-column, when a big movement in the room change the antenna charge level from min to max and then back down again. Due to the intentional "lag" from the smoothing the different colored LED being lit up at any one time will separate and create an interactive rainbow, before reverting to a white bar when the movement stops. The vertical axis represents 0-5V and adress of which LED to light up from 0-180 (180 is max since 120 of the LEDs are disabled from a broken wire).
 
@@ -58,7 +57,7 @@ Current powering strategy:
 
 Improved powering strategy, not yet implemented. This would fix the damage and reduce colour degradation from voltage drop.
 
-![[Powering LEDs suggested improvement](img/Power_flowchart_fix.png)
+![Powering LEDs suggested improvement](img/Power_flowchart_fix.png)
 
 Further reference on Powering LEDs: https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels
 

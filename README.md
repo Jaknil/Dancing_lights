@@ -25,9 +25,11 @@ Right now it flickers quite a bit, I should look into altering the code to reduc
 
 ### Sensing movement of electric charge
 
-Here is a video demonstrating the priciple. I use a electrostatically charged sweater to charge and discharge the antenna voltage level and having it affect which LED pixes light up.
+Here is a video demonstrating the priciple. I use a electrostatically charged sweater to charge and discharge the antenna voltage level and having it affect which LED pixes light up. The final installation uses a prettier color mixing algorithm.
 
-[![Video demonstration with statically charged sweater](img/youtube_short.jpg)](https://youtube.com/shorts/0vz_sim-DHY?feature=share)
+[![Video demonstration with statically charged sweater](img/Static_electricity_controlled_led_column.gif)](https://youtube.com/shorts/0vz_sim-DHY?feature=share) 
+
+Click to view as youtube short.
 
 The installation can detect movement by reading the voltage on an antenna. The arms of the antenna is connected directly to an 0-5V analog input pin on the microcontroller. The signal strength is read repeatedly (around 200 times per secound) and the value is indicated by lighting up the corresponding LED-pixels on the vertical LED column, zero volts being on the bottom and 5v on top. Three pixels are lit up each time Red pixels for the raw signal strenght, Blue with some smoothing and Green pixels with heavy smoothing, using gliding averages of the signal strengh. When colors happen to overlap, they mix and if the signal is noise free and consistent it will display a white bar at some voltage between 0 and 5V. All pixels are faded over time. The effect is an interactive rainbow effect if you move an elecrical charge (like a human body) in the range of the antenna, thus indusing a voltage in the antenna. If you stand still, it will average out to a static white bar. The range and sensitivity can be tuned with the length of the antenna arms to adjust for low charge damp weather or dry electrostatically active days.
 

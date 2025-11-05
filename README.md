@@ -16,11 +16,9 @@ Dancing lights is an interactive sensitive light installation where 180 (was 300
 
 [Current code](code/FirstLight_dual_sensor/FirstLight_dual_sensor.ino)
 
-120 of 300 LEDs are currently not working since I accidentally pulled off a solder-pad. Will probably have to empty it of glass to fix. The problem is in the top.
+120 of 300 LEDs are currently not working since I accidentally pulled off a solder-pad. Will probably have to empty it of glass to fix. The problem is in the top. 
 
-To filter away noise the arduino ground has to be connected to ground via a capacitor (type Y). I currently solve this by using an extra power brick for a Thinkpad laptop that happens to have one built in.
-
-The long wire for the antennae is acting like an antenna as well and merges the signals.
+To filter away noise the arduino ground has to be connected to ground via a capacitor (type Y). I currently solve this by using an extra power brick for a Thinkpad laptop that happens to have one built in. 
 
 Right now it flickers quite a bit, I should look into altering the code to reduce that. (Perhaps blur or filter harder?)
 
@@ -29,6 +27,42 @@ Right now it flickers quite a bit, I should look into altering the code to reduc
 * The motion sensor is based on Capacitive touch [Arduino playground: Capacitive Sensing Library
  by Paul Badger](https://playground.arduino.cc/Main/CapacitiveSensor/) and [My own lesson material on pulldown and EMC noise](https://github.com/KubenKoder/Arduino/tree/master/Egna%20exempel/pulldown)
 * It uses the Arduino [FastLED library](https://fastled.io/) to make the pretty light patterns and [Scott Marleys youtube videos were priceless](https://youtube.com/playlist?list=PLgXkGn3BBAGi5dTOCuEwrLuFtfz0kGFTC) 
+
+### Sensing movement
+
+The installation can detect movement by reading the voltage on an antenna. The arms of the antenna is connected directly to an 0-5V analog input pin on the microcontroller. The signal strength is read repeatedly (around 200 times per secound) and the value is indicated by lighting up the corresponding LED-pixels on the vertical LED column, zero volts being on the bottom and 5v on top. Three pixels are lit up each time Red pixels for the raw signal strenght, Blue with some smoothing and Green pixels with heavy smoothing, using gliding averages of the signal strengh. When colors happen to overlap, they mix and if the signal is noise free and consistent it will display a white bar at some voltage between 0 and 5V. All pixels are faded over time. The effect is an interactive rainbow effect if you move an elecrical charge (like a human body) in the range of the antenna, thus indusing a voltage in the antenna. If you stand still, it will average out to a static white bar. The range and sensitivity can be tuned with the length of the antenna arms to adjust for low charge damp weather or dry electrostatically active days.
+
+Here is a plots of the three signals beeing shown on the LED-column, when no big movements in the room change the antenna charge level. The LEDs will mix and show a bar of White light, The vertical axis represents 0-5V and adress of which LED to light up from 0-180 (180 is max since 120 of the LEDs are disabled from a broken wire). Notice the 50Hz ripple on the RawSignal plot, that translates to a red haze around the white bar in the LED column.
+
+![Smooth_plot_no_change_filtered.png](Smooth_plot_no_change_filtered.png)
+
+Here is a plots of the three signals beeing shown on the LED-column, when a big movement in the room change the antenna charge level from min to max and then back down again. Due to the intentional "lag" from the smoothing the different colored LED being lit up at any one time will separate and create an interactive rainbow, before reverting to a white bar when the movement stops. The vertical axis represents 0-5V and adress of which LED to light up from 0-180 (180 is max since 120 of the LEDs are disabled from a broken wire).
+
+![Smooth_plot_big_change.png](Smooth_plot_big_change.png)
+
+### Filtering noise
+
+Here I have disconnected the noise filtered power supply from the USB and we can se 50Hz noise clearly charging and discharging the antenna all the way to the max and min voltage lines. The smoothed signal still reflects slower movements in the room but it's somewhat drowned in the noise. The same, but much suppressed ripple can also be seen on the previous plots where I have the physical noise filter power supply connected. Finding this "hack" was a nice bonus.
+
+![Smooth_plot_small_change_unfiltered.png](Smooth_plot_small_change_unfiltered.png)
+
+Here is further reading on such filter capasitors: [Safety Capacitors First: Class-X and Class-Y Capacitors](https://www.allaboutcircuits.com/technical-articles/safety-capacitor-class-x-and-class-y-capacitors/)
+
+Note to self: I should buy a filtered DC power supply and replace the chinese one we are using now. 
+
+### Powering the LEDs
+
+Current powering strategy:
+
+![Powering LEDs](Power_flowchart.png)
+
+Improved powering strategy, not yet implemented. This would fix the damage and reduce colour degradation from voltage drop.
+
+![[Powering LEDs suggested improvement](Power_flowchart_fix.png)
+
+Further reference on Powering LEDs: https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels
+
+
 
 ## Bill of Materials
 Purchased in or imported to Norway. NOK = Norwegian kroner.
